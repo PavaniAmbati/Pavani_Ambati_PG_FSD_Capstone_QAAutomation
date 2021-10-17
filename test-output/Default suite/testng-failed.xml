@@ -5,7 +5,7 @@
     <classes>
       <class name="com.simplilearn.worshop.CustomerTests">
         <methods>
-          <include name="positiveDepositTest"/>
+          <include name="positiveMoneyTransferTest"/>
         </methods>
       </class> <!-- com.simplilearn.worshop.CustomerTests -->
     </classes>
