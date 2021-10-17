@@ -303,6 +303,72 @@ public class CustomerTests {
 		driver.quit();
 	}
 	
+	@Test 
+	public void positiveChequebookRequestTest() {
+		
+		System.out.println("Starting cheque book request test");
+		//create driver
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+		
+		WebDriver driver = new ChromeDriver();
+		
+		sleep(2000);
+		
+		//maximize browser window
+		driver.manage().window().maximize();
+		
+		//open test page
+		String url = "http://localhost:4200/customerlogin";
+		driver.get(url);
+		System.out.println("Page is Opened");
+		
+		// enter username
+		WebElement username = driver.findElement(By.id("username"));
+		username.sendKeys("pavani");
+		sleep(2000);
+		// enter password
+		WebElement password = driver.findElement(By.id("password"));
+		password.sendKeys("password");
+		sleep(2000);
+		// click login button
+		WebElement loginButton = driver.findElement(By.id("loginbutton"));
+		loginButton.click();
+		sleep(2000);
+		
+		// click accountdetails button
+		WebElement accountdetailsButton = driver.findElement(By.id("accountdetailsCR"));
+		accountdetailsButton.click();
+		sleep(2000);
+		
+		// click cheque request button
+		WebElement chequerequestButton = driver.findElement(By.id("chequerequest"));
+		chequerequestButton.click();
+		sleep(2000);
+		
+		// select cheque book type  
+		WebElement cheque = driver.findElement(By.name("Authorize"));
+		cheque.sendKeys("100 Cheques");
+		sleep(2000);
+		
+		// click cheque request button
+		WebElement chequebookButton = driver.findElement(By.id("chequebookrequest"));
+		chequebookButton.click();
+		sleep(2000);
+		
+		//verification
+		WebElement successMessage = driver.findElement(By.id("flash"));
+		String expectedSuccessMessage = "Transaction successfully completed";
+		String actualSuccessMessage = successMessage.getText();
+				
+		Assert.assertTrue(actualSuccessMessage.contains(expectedSuccessMessage),
+				"Actual message does not contain expected message. \n Actual Message:" + actualSuccessMessage + "\n Expected Message:"  
+						+ expectedSuccessMessage);
+		sleep (2000);
+		
+		//close browser
+		driver.quit();
+	}
+	
 	private void sleep(long m) {
 		try {
 		Thread.sleep(m);
