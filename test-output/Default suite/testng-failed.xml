@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.simplilearn.worshop.AdminTests">
+      <class name="com.simplilearn.worshop.CustomerTests">
         <methods>
-          <include name="negativeLoginTest"/>
+          <include name="positiveWithdrawalTest"/>
         </methods>
-      </class> <!-- com.simplilearn.worshop.AdminTests -->
+      </class> <!-- com.simplilearn.worshop.CustomerTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
