@@ -137,7 +137,7 @@ public class CustomerTests {
 		accountdetailsButton.click();
 		sleep(2000);
 		
-		// click accountdetails button
+		// click withdrawal button
 		WebElement withdrawButton = driver.findElement(By.id("withdrawal"));
 		withdrawButton.click();
 		sleep(2000);
@@ -150,6 +150,72 @@ public class CustomerTests {
 		// click money withdraw button
 		WebElement withdrawmoneyButton = driver.findElement(By.id("withdrawmoney"));
 		withdrawmoneyButton.click();
+		sleep(2000);
+		
+		//verification
+		WebElement successMessage = driver.findElement(By.id("flash"));
+		String expectedSuccessMessage = "Transaction successfully completed";
+		String actualSuccessMessage = successMessage.getText();
+				
+		Assert.assertTrue(actualSuccessMessage.contains(expectedSuccessMessage),
+				"Actual message does not contain expected message. \n Actual Message:" + actualSuccessMessage + "\n Expected Message:"  
+						+ expectedSuccessMessage);
+		sleep (2000);
+		
+		//close browser
+		driver.quit();
+	}
+	
+	@Test 
+	public void positiveDepositTest() {
+		
+		System.out.println("Starting money deposit test");
+		//create driver
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+		
+		WebDriver driver = new ChromeDriver();
+		
+		sleep(2000);
+		
+		//maximize browser window
+		driver.manage().window().maximize();
+		
+		//open test page
+		String url = "http://localhost:4200/customerlogin";
+		driver.get(url);
+		System.out.println("Page is Opened");
+		
+		// enter username
+		WebElement username = driver.findElement(By.id("username"));
+		username.sendKeys("pavani");
+		sleep(2000);
+		// enter password
+		WebElement password = driver.findElement(By.id("password"));
+		password.sendKeys("password");
+		sleep(2000);
+		// click login button
+		WebElement loginButton = driver.findElement(By.id("loginbutton"));
+		loginButton.click();
+		sleep(2000);
+		
+		// click accountdetails button
+		WebElement accountdetailsButton = driver.findElement(By.id("accountdetails"));
+		accountdetailsButton.click();
+		sleep(2000);
+		
+		// click deposit button
+		WebElement withdrawButton = driver.findElement(By.id("deposit"));
+		withdrawButton.click();
+		sleep(2000);
+		
+		// enter amount to deposit 
+		WebElement amount = driver.findElement(By.name("depositamount"));
+		amount.sendKeys("100");
+		sleep(2000);
+		
+		// click money deposit button
+		WebElement depositmoneyButton = driver.findElement(By.id("depositmoney"));
+		depositmoneyButton.click();
 		sleep(2000);
 		
 		//verification
